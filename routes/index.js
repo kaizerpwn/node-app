@@ -3,10 +3,12 @@ const express = require('express');
 const router = express.Router();
 
 router.use('/', require('./home'));
+
 router.use('/login', require('../controllers/loginController'));
-router.use('/admin', function (req, res) {
-    res.send('Admin Section');
-})
+
+router.use('/logout', require('./logout'));
+
+router.use('/admin', require('./admin'));
 
 
 module.exports = router;
