@@ -412,7 +412,9 @@
                                                 <button type="button" class="btn btn-success btn-sm text-white">
                                                     Publish
                                                 </button>
-                                                <button type="button" class="btn btn-danger btn-sm text-white">
+                                                <button type="button"
+                                                    class="btn btn-danger btn-sm text-white delete-user-btn"
+                                                    data-id="<%= operateri[i]._id %>">
                                                     Delete
                                                 </button>
                                             </div>
@@ -441,7 +443,9 @@
                                                 <button type="button" class="btn btn-success btn-sm text-white">
                                                     Publish
                                                 </button>
-                                                <button type="button" class="btn btn-danger btn-sm text-white">
+                                                <button type="button"
+                                                    class="btn btn-danger btn-sm text-white delete-proizvod-btn"
+                                                    data-id="<%= proizvodi[i]._id %>">
                                                     Delete
                                                 </button>
                                             </div>
@@ -733,7 +737,9 @@
                                                 <button type="button" class="btn btn-success btn-sm text-white">
                                                     Publish
                                                 </button>
-                                                <button type="button" class="btn btn-danger btn-sm text-white">
+                                                <button type="button"
+                                                    class="btn btn-danger btn-sm text-white delete-user-btn"
+                                                    data-id="<%= savjetnici[i]._id %> ">
                                                     Delete
                                                 </button>
                                             </div>
@@ -762,7 +768,9 @@
                                                 <button type="button" class="btn btn-success btn-sm text-white">
                                                     Publish
                                                 </button>
-                                                <button type="button" class="btn btn-danger btn-sm text-white">
+                                                <button type="button"
+                                                    class="btn btn-danger btn-sm text-white delete-gradovi-btn"
+                                                    data-id="<%= gradovi[i]._id %>">
                                                     Delete
                                                 </button>
                                             </div>
@@ -1090,6 +1098,54 @@
     <script src="../assets/libs/flot/jquery.flot.crosshair.js"></script>
     <script src="../assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
     <script src="../dist/js/pages/chart/chart-page-init.js"></script>
+
+    <script>
+        $(".delete-user-btn").on('click', function () {
+            let id = $(this).attr('data-id');
+            let potvrda = confirm("Da li ste sigurni ?");
+
+            if (potvrda) {
+                $.ajax({
+                    url: `/admin/delete/user/${id}`
+                })
+                    .then(res => {
+                        if (res == 'Ok') {
+                            window.location.href = '/admin';
+                        }
+                    })
+            }
+        })
+        $(".delete-proizvod-btn").on('click', function () {
+            let id = $(this).attr('data-id');
+            let potvrda = confirm("Da li ste sigurni ?");
+
+            if (potvrda) {
+                $.ajax({
+                    url: `/admin/delete/proizvod/${id}`
+                })
+                    .then(res => {
+                        if (res == 'Ok') {
+                            window.location.href = '/admin';
+                        }
+                    })
+            }
+        })
+        $(".delete-gradovi-btn").on('click', function () {
+            let id = $(this).attr('data-id');
+            let potvrda = confirm("Da li ste sigurni ?");
+
+            if (potvrda) {
+                $.ajax({
+                    url: `/admin/delete/gradovi/${id}`
+                })
+                    .then(res => {
+                        if (res == 'Ok') {
+                            window.location.href = '/admin';
+                        }
+                    })
+            }
+        })
+    </script>
 </body>
 
 </html>
