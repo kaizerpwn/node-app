@@ -10,5 +10,9 @@ router.use('/logout', require('./logout'));
 
 router.use('/admin', require('./admin'));
 
+router.use('/operater', require('./operater'));
+
+router.use('/savjetnik', require('./savjetnik'));
+
 
 module.exports = router;

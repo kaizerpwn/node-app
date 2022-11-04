@@ -17,7 +17,14 @@ const loginController = (req, res) => {
                 req.session.user = user;
                 if (user.role === "admin") {
                     res.redirect('/admin');
-                } else {
+                }
+                else if (user.role === "operater") {
+                    res.redirect('/operater');
+                }
+                else if (user.role === "savjetnik") {
+                    res.redirect('/savjetnik');
+                }
+                else {
                     res.redirect('/');
                 }
             } else {
