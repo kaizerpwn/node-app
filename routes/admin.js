@@ -24,6 +24,9 @@ router.post('/create/save', require('../controllers/admin/saveController'));
 router.post('/create/grad/save', require('../controllers/admin/saveGradController'));
 router.post('/create/proizvod/save', require('../controllers/admin/saveProizvodController'));
 
+// savjetnik
+router.get('/savjetnik/termini/:name', require('../controllers/admin/savjetnikTerminiController'));
+
 function checkAdmin(req, res, next) {
     let user = req.session.user;
     if (user) {
